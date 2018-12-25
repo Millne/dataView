@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>map</title>
+        <meta name="keywords" content="" />
+        <link rel="stylesheet" type="text/css" href="static/css/swiper-3.4.2.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/main.css">
+        <script type="text/javascript" src="static/js/echarts-complete.js"></script>
+        <!-- 全国344个市、区、州对应的数字编号 -->
+        <script type="text/javascript" src="static/js/citymap.js"></script>
+        <script type="text/javascript" src="static/map/Point/leaderPoint.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <div id="main" style="width: 100%;height:900px;"></div>
+        <div class="collBack">返回到大图</div>
+        <div id='blockWindow'>
+            <div class="title"></div>
+            <div class="content">
+                <div class="imgs">
+                    <div class="sm_mask">
+                        <div class="sm_box">查看更多</div>
+                    </div>
+                    <img class="sm_img" src="" alt="">
+                </div>
+                <div class="msg">
+                    <p class="big_phone">
+                        <span>联系电话：</span>
+                        <span class="phone" style="font-size: 13px;"></span>
+                    </p>
+                    <p>
+                        <span>地址：</span>
+                        <span class="address" style="font-size: 13px;"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="imgShow">
+            <div class="cloose">×</div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="static/js/swiper-3.4.2.min.js"></script>
+        <script type="text/javascript" src="static/js/ColdCar.js"></script>
+        <script type="text/javascript" src="static/js/appOrgin.js"></script>
+        <script type="text/javascript" src="static/js/banner.js"></script>
+        
+        <script>
+            $('#main').on("click", ()=>{   //隐藏标记窗口
+                $('#blockWindow').removeClass('outBlock')
+            })
+            $('.collBack').on("click", ()=>{  // 返回地图
+                $('#blockWindow').removeClass('outBlock')
+                renderMap('china', mapdata, leaderP, subP, bossP, 22, 16);
+            })
+            $('.imgs').on({    // 小图片事件
+                mouseenter: () => {
+                    $('.sm_mask').css({"opacity": 1})
+                }, mouseleave: () => {
+                    $('.sm_mask').css({"opacity": 0})
+                },
+                click: () => {
+                    $('.imgShow').css({"transform": "scale(1)"})
+                }
+            })
+            $('.cloose').on({
+                click: () => {    // 隐藏大图图窗口
+                    $('.imgShow').css({"transform": "scale(0)"})
+                }
+            })
+        </script>
+    </body>
+</html>
